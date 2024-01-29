@@ -1,7 +1,6 @@
 <template>
   <div class="overflow-x-auto">
     <table class="table">
-      <!-- head -->
       <thead>
         <tr>
           <th>
@@ -16,7 +15,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- row 1 -->
         <tr v-for="user in displayUsers">
           <th>
             <label>
@@ -53,11 +51,6 @@
 
 <script setup>
 const props = defineProps({
-  users: {
-    type: Array,
-    default: () => [],
-    required: true,
-  },
   displayUsers: {
     type: Array,
     default: () => [],

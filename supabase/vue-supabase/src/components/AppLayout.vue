@@ -5,7 +5,7 @@
   <div class="text-center my-3">
     <ConditionFilter @searchUser="(value) => (queryName = value)" />
 
-    <Table :users="users" :displayUsers="displayUsers" />
+    <Table :displayUsers="displayUsers" />
   </div>
 
   <Footer />
