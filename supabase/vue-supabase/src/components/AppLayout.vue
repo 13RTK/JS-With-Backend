@@ -34,10 +34,10 @@ const displayUsers = computed(() => {
 onMounted(() => {
   const usersArr = Array.from({ length: 10 }, (_, idx) => ({
     id: idx,
-    avatar: faker.internet.avatar(),
+    avatar: faker.image.avatar(),
     name: faker.internet.userName(),
     country: faker.location.country(),
-    company: faker.company.bs(),
+    company: faker.company.buzzPhrase(),
     role: faker.person.jobTitle(),
   }));
 
