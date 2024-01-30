@@ -27,7 +27,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { getFakeUser } from "@/utils/userHelper";
+import { getUsers, deleteUserById, updateUserField } from "@/utils/userHelper";
 import { useToast } from "vue-toastification";
 
 import Table from "./Table.vue";
@@ -48,11 +48,11 @@ const cancelEditUser = () => {
   editUser.value = null;
 };
 
-const updateUser = (newUser) => {
+const updateUser = async (newUser) => {
   toast.clear();
 
   // Post the new user
-  // TODO: Request api to update user
+  await updateUserField(newUser);
 
   // Update Success
   users.value = users.value.map((user) => {
@@ -69,9 +69,9 @@ const updateUser = (newUser) => {
   cancelEditUser();
 };
 
-const deleteUser = (deleteUser) => {
+const deleteUser = async (deleteUser) => {
   toast.clear();
-  // TODO: Fetch delete API
+  await deleteUserById(deleteUser.id);
 
   // Delete success
   users.value = users.value.filter((user) => user.id !== deleteUser.id);
@@ -90,14 +90,8 @@ const displayUsers = computed(() => {
   return users.value.filter((user) => user.name.includes(queryName.value));
 });
 
-onMounted(() => {
-  // TODO: Get data from API
-  const usersArr = Array.from({ length: 10 }, (_, idx) => {
-    const fakeUser = getFakeUser();
-    fakeUser.id = idx;
-
-    return fakeUser;
-  });
+onMounted(async () => {
+  const usersArr = await getUsers();
 
   users.value = usersArr;
 });

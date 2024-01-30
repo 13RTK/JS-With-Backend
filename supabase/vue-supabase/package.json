@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
     "vue": "^3.3.11",
     "vue-toastification": "2.0.0-rc.5"
   },
