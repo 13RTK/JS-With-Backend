@@ -1,7 +1,5 @@
 import { faker } from "@faker-js/faker";
 
-const BASE_URL = "";
-
 export const getFakeUser = () => {
   return {
     id: Date.now(),
@@ -11,10 +9,4 @@ export const getFakeUser = () => {
     company: faker.company.buzzPhrase(),
     role: faker.person.jobTitle(),
   };
-};
-
-const insertFakeUser = async () => {
-  const fakeUser = getFakeUser();
-
-  // Fetch API to insert
 };

@@ -27,7 +27,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { getFakeUser } from "@/includes/userInert";
+import { getFakeUser } from "@/utils/userHelper";
 import { useToast } from "vue-toastification";
 
 import Table from "./Table.vue";
@@ -71,7 +71,7 @@ const updateUser = (newUser) => {
 
 const deleteUser = (deleteUser) => {
   toast.clear();
-  // Fetch delete API
+  // TODO: Fetch delete API
 
   // Delete success
   users.value = users.value.filter((user) => user.id !== deleteUser.id);
@@ -91,6 +91,7 @@ const displayUsers = computed(() => {
 });
 
 onMounted(() => {
+  // TODO: Get data from API
   const usersArr = Array.from({ length: 10 }, (_, idx) => {
     const fakeUser = getFakeUser();
     fakeUser.id = idx;
